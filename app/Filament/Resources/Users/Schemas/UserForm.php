@@ -24,10 +24,11 @@ class UserForm
                     ->description('Datos de acceso')
                     ->schema([
                         TextInput::make('name')
+                        ->label('Nombre completo')
                         ->required()
                         ->maxLength(255),
                         TextInput::make('email')
-                            ->label('Email address')
+                            ->label('Correo electrónico')
                             ->email()
                             ->required(),
                         TextInput::make('password')
@@ -77,23 +78,19 @@ class UserForm
                                 ->preload()
                                 ->searchable()
                                 ->live()
-                                ->afterStateUpdated(fn (Set $set) => $set('municipality_id', null))
-                                ->required(),
+                                ->afterStateUpdated(fn (Set $set) => $set('municipality_id', null)),
                             Select::make('municipality_id')
                                 ->options(
                                     fn (Get $get) => \App\Models\Municipality::where('state_id', $get('state_id'))
                                         ->pluck('name', 'id')
                                 )
                                 ->label('Municipio')
-                                ->searchable()
-                                ->required(),
+                                ->searchable(),
                             TextInput::make('address')
                                 ->label('Calle y número')
-                                ->required()
                                 ->maxLength(255),
                             TextInput::make('postal_code')
                                 ->label('Código Postal')
-                                ->required()
                                 ->maxLength(5),
 
                     ])

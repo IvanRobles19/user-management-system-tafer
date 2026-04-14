@@ -24,6 +24,8 @@ class MunicipalityResource extends Resource
     protected static string | UnitEnum | null $navigationGroup = 'Ubicaciones';
 
     protected static ?string $navigationLabel = 'Municipios';
+    protected static ?string $modelLabel = 'Municipio';
+    protected static ?string $pluralModelLabel = 'Municipios';
 
     protected static ?string $recordTitleAttribute = 'name';
 

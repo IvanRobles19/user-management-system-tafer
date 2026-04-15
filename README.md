@@ -1,58 +1,154 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Sistema de Gestión de Usuarios
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplicación web desarrollada con Laravel 10 y Filament, que permite la administración de usuarios mediante un panel administrativo moderno, seguro y completamente funcional.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tecnologías Utilizadas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* **Lenguaje:** PHP 8.4
+* **Framework:** Laravel 13.0
+* **Panel Administrativo:** Filament PHP v5.5
+* **Base de Datos:** SQLite 
+* **Gestor de dependencias:** Composer
+* **Manejo de base de datos:** Eloquent ORM 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+##  Instrucciones de Instalación
+1️⃣ Clonar el Repositorio
+Obtén una copia local del proyecto y accede al directorio raíz:
+```
+git clone https://github.com/IvanRobles19/user-management-system-tafer.git
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
 
-## Contributing
+2️⃣ Instalar dependencias
+> [!IMPORTANTE]
+> Después de clonar, asegúrate de entrar a la carpeta del proyecto antes de ejecutar cualquier otro comando:
+> `cd user-management-system-tafer`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Instala las librerías de PHP
+```
+composer install
+```
 
-## Code of Conduct
+3️⃣ Configuración del Entorno
+Prepara el archivo de configuración y la base de datos:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+***Configurar variables de entorno***
 
-## Security Vulnerabilities
+**Windows (PowerShell) / Linux / Mac:**
+```
+cp .env.example .env
+```
+**Windows (CMD):**
+```
+copy .env.example .env
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Generar la clave de encriptación de la aplicación
+```
+php artisan key:generate
+```
+<br>
+<br>
 
-## License
+***Configuración de Base de Datos (SQLite)***
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+El sistema utiliza SQLite para garantizar una revisión rápida y sin configuraciones de servidores externos
+
+**Windows (PowerShell):**
+```
+touch database/database.sqlite
+```
+**Linux / Mac / Git Bash:**
+```
+touch database/database.sqlite
+```
+**Windows (CMD):**
+```
+type nul > database/database.sqlite
+```
+
+
+4️⃣ Migraciones y Datos de Prueba
+Ejecuta la estructura de tablas y carga los catálogos de Estados, Municipios y el usuario administrador inicial:
+
+```
+php artisan migrate --seed
+```
+
+5️⃣ Puesta en Marcha
+Inicia el servidor de desarrollo de Laravel:
+```
+php artisan serve
+```
+
+##   Acceso al Sistema
+Una vez iniciado el servidor, puedes acceder a la interfaz administrativa a través de la siguiente URL:
+
+URL: http://127.0.0.1:8000/
+
+
+
+##  Credenciales de Acceso (Admin)
+El DatabaseSeeder genera automáticamente el siguiente usuario:
+* **URL:** /admin
+* **Correo Electrónico:** admin@tafer.com
+* **Contraseña:** Tafer2026*
+
+
+
+##  Capturas de Pantalla
+Login
+![Login](screenshots/login.png)
+
+Escritorio (Dashboard)
+Panel principal con widgets de estadísticas y acceso rápido.
+![Dashboard](screenshots/dashboard.png)
+
+Gestión de Usuarios
+Tabla optimizada con etiquetas en español y columnas accionables. 
+![Listado de Usuarios](screenshots/seccion-usuarios.png)
+
+Formulario de Registro
+Esquema de domicilio con lógica de selección dependiente para Estados y Municipios.
+![Formulario de Registro](screenshots/formulario-usuarios.png)
+
+## Estructura de la base de datos
+
+Tabla: users
+
+| Campo           | Tipo      | Descripción               | Obligatorio |
+| --------------- | --------- | ------------------------- | ----------- |
+| id              | bigint    | ID único                  | Sí          |
+| name            | string    | Nombre del usuario        | Sí          |
+| email           | string    | Correo único              | Sí          |
+| password        | string    | Contraseña encriptada     | Sí          |
+| address         | string    | Dirección del usuario     | No          |
+| postal_code     | string    | Código Postal del usuario | No          |
+| state_id        | bigint    | Relación con el estado    | No          |
+| municipality_id | bigint    | Relación con el municipio | No          |
+| created_at      | timestamp | Fecha de creación         | Sí          |
+| updated_at      | timestamp | Fecha de actualización    | Sí          |
+
+**Nota:**
+Los campos relacionados con el domicilio (`address`, `postal_code`, `state_id`, `municipality_id`) son **opcionales** y pueden ser nulos, ya que no son obligatorios para el registro del usuario.
+
+
+### Tabla: states
+
+| Campo | Tipo   | Descripción       |
+| ----- | ------ | ----------------- |
+| id    | bigint | ID                |
+| name  | string | Nombre del estado |
+
+
+### Tabla: municipalities
+
+| Campo    | Tipo   | Descripción            |
+| -------- | ------ | ---------------------- |
+| id       | bigint | ID                     |
+| name     | string | Nombre del municipio   |
+| state_id | bigint | Relación con el estado |
+
+Cada municipio pertenece a un estado mediante una relación foránea (`state_id`).

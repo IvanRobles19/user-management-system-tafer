@@ -12,6 +12,25 @@ Aplicación web desarrollada con Laravel 10 y Filament, que permite la administr
 * **Gestor de dependencias:** Composer
 * **Manejo de base de datos:** Eloquent ORM 
 
+## Extensiones de PHP requeridas
+
+Es recomendable tener habilitadas las siguientes extensiones en PHP para el correcto funcionamiento del sistema:
+
+* **zip**
+* **fileinfo**
+* **intl**
+* **pdo_sqlite**
+* **sqlite3**
+
+Activación de extensiones en PHP
+Para habilitar estas extensiones, edita el archivo php.ini y asegúrate de que las siguientes líneas estén activas (sin ; al inicio):
+
+* **extension=zip**
+* **extension=fileinfo**
+* **extension=intl**
+* **extension=pdo_sqlite**
+* **extension=sqlite3**
+
 
 ##  Instrucciones de Instalación
 1️⃣ Clonar el Repositorio
